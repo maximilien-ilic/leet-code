@@ -1,0 +1,44 @@
+#Simulating addition digit by digit on linked lists while managing carry propagation.
+
+
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def addTwoNumbers(self, l1, l2):
+        """
+        :type l1: Optional[ListNode]
+        :type l2: Optional[ListNode]
+        :rtype: Optional[ListNode]
+        """
+        result = []
+        reste = 0
+        i = 0
+        while l1 is not None or l2 is not None:
+            if l1 == None :
+                total = l2.val + reste
+                reste = total // 10
+                result.append(total % 10)
+
+            elif l2 == None :
+                total = l1.val + reste
+                reste = total // 10
+                result.append(total % 10)
+            else:
+                total = l1.val + l2.val + reste
+                reste = total // 10
+                result.append(total % 10)
+
+            l1 = l1.next if l1 else None
+            l2 = l2.next if l2 else None
+            i += 1
+        if reste>0:
+            result.append(reste)
+        debut =  ListNode()
+        head = debut
+        for i in range(len(result)):
+            debut.next = ListNode(result[i])
+            debut = debut.next
+        return head.next
