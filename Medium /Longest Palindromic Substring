@@ -1,0 +1,33 @@
+#Expanding around center to find palindromes, checking both odd and even length cases.
+
+class Solution(object):
+    def longestPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        longuest = ""
+        max = ""
+        for i in range(len(s)):
+            centre = i
+            left = -1 + centre
+            right = 1 + centre
+            if left >= 0 and right < len(s) and s[left] == s[right]:
+                while left >= 0 and right < len(s) and s[left] == s[right]: 
+                    max = s[left:right+1]
+                    left -= 1
+                    right += 1
+                    if len(max)>len(longuest):
+                        longuest = max
+            left = + centre
+            right = 1 + centre
+            if left >= 0 and right < len(s) and s[left] == s[right]:
+                while left >= 0 and right < len(s) and s[left] == s[right]:
+                    max = s[left:right+1]
+                    left -= 1
+                    right += 1
+                    if len(max)>len(longuest):
+                        longuest = max
+        if longuest == "":
+            return s[0]
+        return longuest
