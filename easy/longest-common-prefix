@@ -1,0 +1,18 @@
+#Iterate through characters of the first string and verify presence at same index in all other strings
+
+
+class Solution(object):
+    def longestCommonPrefix(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: str
+        """
+        result  = ""
+        test = ""
+        for i in range(len(strs[0])):
+            test = strs[0][i]
+            for j in range(len(strs)):
+                if len(strs[j])<=i or test != strs[j][i]:
+                    return result
+            result += strs[0][i]
+        return result
