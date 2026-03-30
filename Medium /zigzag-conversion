@@ -1,0 +1,31 @@
+#Simulate zigzag traversal by mapping characters to rows without explicit grid storage
+
+class Solution(object):
+    def convert(self, s, numRows):
+        import math
+        i = 0
+        j = 0
+        result = ""
+        if numRows == 1 or len(s) <= numRows:
+            return s
+        
+        num_cols = len(s)  
+        matrice = [[""] * num_cols for _ in range(numRows)]
+        
+        while s:
+            while j < numRows and s:
+                matrice[j][i] = s[0]
+                s = s[1:]
+                j += 1
+            j -= 2
+            i += 1
+            while j > 0 and s:
+                matrice[j][i] = s[0]
+                s = s[1:]
+                j -= 1
+                i += 1
+
+        for n in range(numRows):
+            for m in range(num_cols):
+                result += matrice[n][m]
+        return result
