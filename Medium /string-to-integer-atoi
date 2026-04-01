@@ -1,0 +1,52 @@
+#Parse string character by character while handling whitespace, signs, and 32-bit integer overflow constraints.
+
+
+
+class Solution:
+    def myAtoi(self,s: str) -> int:
+        result = ""
+        sign = 1
+        sign_seen = False
+        for i in range(len(s)):
+            if s[i].isnumeric() and i != 0:
+                if s[i-1] == "-":
+                    sign_seen = True
+                    sign = - 1
+                    while i < len(s) and s[i].isnumeric() :
+                        result += s[i]
+                        i += 1
+                    if -2**31 > sign * int(result) :
+                        return -2**31
+                    else:
+                        return sign * int(result)
+                else:
+                    while i < len(s) and s[i].isnumeric() :
+                        result += s[i]
+                        i += 1
+                    if 2**31 - 1 < int(result) :
+                        return 2**31 -1
+                    else:
+                        return sign * int(result)
+
+            elif s[i].isnumeric() and i == 0:
+                while i < len(s) and s[i].isnumeric() :
+                    result += s[i]
+                    i += 1
+                if 2**31 - 1 < int(result) :
+                    return 2**31 -1
+                else:
+                    return sign * int(result)
+            elif sign_seen :
+                return 0
+            elif s[i] == " " :
+                continue
+            elif s[i] == "-" :
+                sign_seen = True
+                sign = -1
+            elif s[i] == "+" :
+                sign_seen = True
+                sign = 1
+            else :
+                return 0
+        return 0         
+
