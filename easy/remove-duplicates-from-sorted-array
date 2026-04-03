@@ -1,0 +1,14 @@
+#Removing duplicates from a sorted array in-place using linear time complexity
+
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        k = 0
+        result = []
+        for i in range(len(nums)):
+            if nums[i] in result :
+                continue
+            else:
+                result.append(nums[i])
+                nums[k] = nums[i]
+                k += 1
+        return k
