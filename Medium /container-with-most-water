@@ -1,0 +1,19 @@
+#Using two pointers moving inward from ends, always advancing the shorter line to maximize area.
+
+
+
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+        droite = len(height) - 1
+        gauche = 0
+        aire = 0
+        max = 0
+        while droite != gauche :
+            aire = min(height[gauche],height[droite]) * (droite - gauche)
+            if aire > max :
+                max = aire
+            if height[gauche] >= height[droite]:
+                droite -= 1
+            else:
+                gauche += 1
+        return max
