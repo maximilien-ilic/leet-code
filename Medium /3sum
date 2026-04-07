@@ -1,0 +1,28 @@
+#Sort the array then use a fixed pointer with two moving pointers to find triplets summing to zero efficiently.
+
+
+class Solution:
+    def threeSum(self, nums: list[int]) -> list[list[int]]:
+        result = []
+        nums = sorted(nums)
+        for i in range(len(nums)):
+            x = nums[i]
+            droite = len(nums)-1
+            gauche = i + 1
+            if i > 0 and nums[i] == nums[i-1] :
+                continue
+            else:
+                while gauche < droite:
+                    if -x < nums[droite] + nums[gauche]:
+                        droite -= 1
+                    elif -x > nums[droite] + nums[gauche]:
+                        gauche += 1
+                    else:
+                        result.append([x,nums[gauche],nums[droite]])
+                        gauche += 1
+                        droite -= 1
+                        while gauche<droite and nums[gauche] == nums[gauche - 1] :
+                            gauche += 1
+                        while gauche<droite and nums[droite] == nums[droite + 1] :
+                            droite -= 1
+        return result
