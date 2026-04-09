@@ -1,0 +1,17 @@
+#Finding the first occurrence of a substring within a larger string efficiently.
+
+
+
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        index = -1
+        j = 0
+        for i in range(len(haystack)):
+            if needle[j] == haystack[i]:
+                index = i
+                while (i+j) < len(haystack) and needle[j] == haystack[i + j] :
+                    if j + 1 == len(needle) : 
+                        return index
+                    j += 1
+                j = 0
+        return -1
