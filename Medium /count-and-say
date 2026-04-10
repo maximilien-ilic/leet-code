@@ -1,0 +1,19 @@
+#Generating the count-and-say sequence using recursive run-length encoding simulation
+
+
+
+class Solution:
+    def countAndSay(self, n: int) -> str:
+        result = ""
+        head = 1
+        if n == 1 :
+            return "1"
+        else:
+            queud = self.countAndSay(n-1)
+            for i in range (len(queud)-1):
+                if queud[i] == queud[i+1]:
+                    head += 1
+                else:
+                    result += str(head) + queud[i]
+                    head = 1
+            return result + str(head) + queud[-1]
