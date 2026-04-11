@@ -1,0 +1,9 @@
+#Adding binary strings by converting to integers or simulating bit-by-bit addition with carry.
+
+
+
+class Solution:
+    def addBinary(self, a: str, b: str) -> str:
+        addition = int(a, 2) + int(b, 2)
+        result = bin(addition)
+        return result[2:]
