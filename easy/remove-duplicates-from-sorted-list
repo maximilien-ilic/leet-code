@@ -1,0 +1,25 @@
+#Traversing a sorted linked list to remove adjacent duplicates by comparing current and next nodes.
+
+
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        tete = ListNode(0)
+        result = tete 
+        if head == None or head.next == None:
+            return head
+        while head.next != None :
+            if head.val == head.next.val:
+                head = head.next
+            else:
+                result.next = ListNode(head.val)
+                result = result.next
+                head = head.next
+        result.next = ListNode(head.val)
+        result = result.next
+        return tete.next
