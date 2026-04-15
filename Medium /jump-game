@@ -1,0 +1,20 @@
+#Track the maximum reachable index iteratively to determine if the end is accessible.
+
+
+
+class Solution(object):
+    def canJump(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        if len(nums) == 1:
+            return True
+        indexMax = 0
+        for i in range(len(nums)): 
+            if i  > indexMax :
+                return False
+            if i + nums[i] >= len(nums) - 1:
+                return True 
+            indexMax = max(indexMax,nums[i] + i)
+        return False
