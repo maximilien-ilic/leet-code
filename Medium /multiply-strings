@@ -1,0 +1,29 @@
+
+#Simulate the vertical multiplication process manually using arrays to store intermediate results without converting entire strings to integers.
+
+
+class Solution:
+    def multiply(self, num1: str, num2: str) -> str:
+        convert = {"0":0,"1":1,"2":2,"3":3,"4":4,"5":5,"6":6,"7":7,"8":8,"9":9}
+        number1 = 0
+        number2 = 0
+        multiply = 1
+        if len(num1) > len(num2):
+            for i in range(len(num1)):
+                if len(num2) > i :
+                    number1 += convert[num1[len(num1)-i - 1]] * multiply
+                    number2 += convert[num2[len(num2)-i-1]] * multiply
+                else:
+                    number1 += convert[num1[len(num1)-i -1]] * multiply
+                multiply = multiply * 10
+        else:
+            for i in range(len(num2)):
+                if len(num1) > i :
+                    number1 += convert[num1[len(num1)-i -1]] * multiply
+                    number2 += convert[num2[len(num2)-i -1]] * multiply
+                else:
+                    number2 += convert[num2[len(num2)-i -1]] * multiply
+                multiply = multiply * 10
+        if number1 == 0 or number2 == 0:
+            return "0"
+        return str(number1 * number2)
