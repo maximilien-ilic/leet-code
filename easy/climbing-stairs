@@ -1,0 +1,20 @@
+#Solving the climbing stairs problem using recursive relations with memoization or iterative state compression
+
+class Solution(object):
+    dico = {}
+    def climbStairs(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        if n == 1 :
+            return 1
+        if n == 2 :
+            return 2 
+        if n in dico :
+            return dico[n]
+        else :
+            queud = self.climbStairs(n-1)
+            queud2 = self.climbStairs(n-2)
+            dico[n] = queud + queud2
+            return queud + queud2
