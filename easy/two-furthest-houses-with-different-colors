@@ -1,0 +1,13 @@
+#Maximize distance by checking endpoints against internal elements using a greedy two-pointer approach.
+
+
+
+class Solution:
+    def maxDistance(self, colors: List[int]) -> int:
+
+        for i in range(len(colors)):
+            if colors[0] != colors[len(colors)-i -1]:
+                return len(colors)-i -1
+            if colors[-1] != colors[i] :
+                return len(colors)-i - 1
+
