@@ -1,0 +1,27 @@
+#"Use semaphores to ensure three concurrent threads always print 'first', 'second', 'third' in order regardless of thread scheduling."
+
+class Foo:
+    def __init__(self):
+        self.first = threading.Semaphore(0)
+        self.second = threading.Semaphore(0)
+
+
+    def first(self, printFirst: 'Callable[[], None]') -> None:
+        
+        # printFirst() outputs "first". Do not change or remove this line.
+        printFirst()
+        self.first.release()
+
+    def second(self, printSecond: 'Callable[[], None]') -> None:
+        
+        # printSecond() outputs "second". Do not change or remove this line.
+        self.first.acquire()
+        printSecond()
+        self.second.release()
+
+
+    def third(self, printThird: 'Callable[[], None]') -> None:
+        
+        # printThird() outputs "third". Do not change or remove this line.
+        self.second.acquire()
+        printThird()
