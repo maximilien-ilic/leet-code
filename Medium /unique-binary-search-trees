@@ -1,0 +1,22 @@
+#Given an integer n, return the number of structurally unique BST's (binary search trees) which has exactly n nodes of unique values from 1 to n.
+
+
+
+
+class Solution:
+    dico = {}
+    def numTrees(self, n: int) -> int: 
+        if n == 0:
+            return 1
+        if n == 1 :
+            return 1 
+        if n in self.dico:
+            return self.dico[n]
+        else:
+            result = 0
+            for i in range( 1,n+1):
+                droite = self.numTrees(i-1)
+                gauche = self.numTrees(n-i)
+                result += droite * gauche
+            self.dico[n] = result
+            return result
