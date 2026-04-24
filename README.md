@@ -9,4 +9,4 @@ This project is part of a continuous self-improvement journey. The goal is to st
 ## Technologies
  
 - Python
- 
+- SQL
