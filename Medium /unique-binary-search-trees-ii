@@ -1,0 +1,25 @@
+#Generating unique BSTs using recursive divide and conquer based on root selection and Cartesian product of subtrees.
+
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = valleft
+#         self.left = 
+#         self.right = right
+class Solution:
+    def generateTrees(self, n: int) -> List[Optional[TreeNode]]:
+        return self.helper(1, n)
+
+    def helper(self, start, end):
+        if start > end:
+            return [None]
+        else:   
+            result = []
+            for i in range(start,end+1):
+                gauche = self.helper(start, i-1)
+                droite = self.helper(i + 1, end)   
+                for g in gauche:
+                    for d in droite:
+                        result.append(TreeNode(i,g,d))
+            return result 
