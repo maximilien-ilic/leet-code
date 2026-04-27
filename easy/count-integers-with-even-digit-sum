@@ -1,0 +1,19 @@
+#Counting numbers with even digit sums using brute force simulation versus mathematical parity properties.
+
+
+
+class Solution:
+    def countEven(self, num: int) -> int:
+        number = 0
+        result = 0     
+        for i in range(num+1):
+            count = 0
+            number = i
+            while number > 0 :
+                count += number % 10 
+                number = number // 10
+            if count % 2 == 0:
+                print(count)
+                result += 1
+        return result - 1
+                
