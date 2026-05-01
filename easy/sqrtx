@@ -1,0 +1,20 @@
+#Calculating integer square root using iterative approximation or binary search without built-in functions.
+
+
+
+class Solution:
+    def mySqrt(self, x: int) -> int:
+        guess = x 
+        tolerance = 0.00001
+        if x == 0:
+            return 0
+        while(1):
+
+            calc = (guess + x/guess) / 2
+
+            if abs(calc-guess) < tolerance:
+                break
+
+            guess = calc
+            
+        return int(guess)
