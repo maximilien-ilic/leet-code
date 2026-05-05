@@ -1,0 +1,20 @@
+#Sort people by height in descending order using paired data structures.
+
+
+
+class Solution:
+    def sortPeople(self, names: List[str], heights: List[int]) -> List[str]:
+        tallest = 0
+        index = 0
+        result = []
+        for i in range(len(heights)):
+            for j in range(len(heights)):
+                if heights[j] > tallest:
+                    tallest = heights[j]
+                    index = j
+                    print(tallest)
+            tallest = 0
+            result.append(names[index])
+            names.pop(index)
+            heights.pop(index)
+        return result
