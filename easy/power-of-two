@@ -1,0 +1,14 @@
+#Identify powers of two using binary representation properties where only one bit is set.
+
+
+class Solution:
+    def isPowerOfTwo(self, n: int) -> bool:
+        number = 0
+        index = 0
+        while number < n :
+            number = 2 ** index
+            index += 1
+            if number == n :
+                return True
+            print(number)
+        return False
