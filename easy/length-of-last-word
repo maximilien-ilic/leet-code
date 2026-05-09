@@ -1,0 +1,15 @@
+#Traversing the string from the end to skip trailing spaces and count the last word's characters
+
+
+class Solution:
+    def lengthOfLastWord(self, s: str) -> int:
+        lenght = 0
+        index = len(s) - 1
+        if s[index] == " " :
+            while s[index] == " " and index >= 0:
+                index -= 1
+                
+        while s[index] != " " and index >= 0 :
+            lenght += 1
+            index -= 1
+        return lenght 
