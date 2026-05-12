@@ -1,0 +1,12 @@
+### Determining if a number is a power of three using iterative multiplication or mathematical properties.
+
+class Solution:
+    def isPowerOfThree(self, n: int) -> bool:
+        power = 0
+        if n == 1:
+            return True
+        while 3 ** power < n :
+            power += 1
+            if 3 ** power == n :
+                return True
+        return False
