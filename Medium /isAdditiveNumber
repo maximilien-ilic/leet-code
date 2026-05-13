@@ -1,0 +1,27 @@
+#Iterate over possible first two numbers and validate the rest of the sequence via simulation.
+
+
+class Solution:
+    def isAdditiveNumber(self, num: str) -> bool:
+        def check(i, j):
+            num1 = num[0:i]
+            num2 = num[i:i+j]
+            pos = i + j
+            if num1[0] == "0" and len(num1) > 1 :
+                return False
+            if num2[0] == "0" and len(num2) > 1 :
+                return False
+            while pos < len(num):
+                sum_str = str(int(num1) + int(num2))
+                if num[pos:].startswith(sum_str):
+                    num1 = num2
+                    num2 = sum_str
+                    pos += len(sum_str)
+                else:
+                    return False
+            return True
+        for i in range(1 , len(num) - 1):
+            for j in range(1,len(num) - i):
+                if check(i, j):
+                    return True
+        return False
