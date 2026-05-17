@@ -1,0 +1,13 @@
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        nums = sorted(nums)
+        number = 0
+        for i in range(len(nums)):
+            if i == len(nums)-1:
+                return nums[i]
+            if nums[i+1] > nums[i] and i == 0 :
+                return nums[i]
+            elif nums[i+1] > nums[i] and nums[i] > number:
+                return nums[i]
+            number = nums[i]
+        
