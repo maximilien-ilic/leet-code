@@ -1,0 +1,15 @@
+class Solution:
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        mapping = {}
+        words = s.split()
+        if len(pattern) != len(words):
+            return False
+        for p, w in zip(pattern, words):
+            if p in mapping:
+                if mapping[p] != w:
+                    return False
+            else:
+                if w in mapping.values():
+                    return False
+                mapping[p] = w
+        return True
