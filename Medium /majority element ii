@@ -1,0 +1,19 @@
+class Solution:
+    def majorityElement(self, nums: List[int]) -> List[int]:
+        majority = len(nums) // 3
+        nums = sorted(nums)
+        curentNumber = nums[0]
+        curentIndex = 0
+        result = []
+
+        for i in range(len(nums)):
+            if curentNumber == nums[i]:
+                curentIndex += 1
+            else:
+                curentNumber = nums[i] 
+                curentIndex = 1         
+
+            if curentIndex > majority and curentNumber not in result:
+                result.append(curentNumber)
+
+        return result
